@@ -9,10 +9,12 @@ from pync import Notifier
 
 load_dotenv()  # take environment variables from .env.
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 USERNAME = os.getenv("INSTAGRAM_USERNAME")
 PASSWORD = os.getenv("INSTAGRAM_PASSWORD")
-SESSION_FILE = "/Users/ashutoshpatkar/instadm/ig_session.json"
-SEEN_FILE = "/Users/ashutoshpatkar/instadm/ig_seen.json"
+SESSION_FILE = os.path.join(BASE_DIR, "ig_session.json")
+SEEN_FILE = os.path.join(BASE_DIR, "ig_seen.json")
 
 POLL_INTERVAL = 120  # seconds (recommended: 30–60)
 
