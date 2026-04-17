@@ -1,15 +1,30 @@
 import json
+import logging
 import os
 import random
 import time
 
 from dotenv import load_dotenv
 from instagrapi import Client
+from logging.handlers import TimedRotatingFileHandler
 from pync import Notifier
 
-load_dotenv()  # take environment variables from .env.
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_FILE = os.path.join(BASE_DIR, "instadm.log")
+
+handler = TimedRotatingFileHandler(
+    LOG_FILE,
+    when="midnight",
+    interval=3,
+    backupCount=3
+)
+logging.basicConfig(
+    handlers=[handler, logging.StreamHandler()],
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 USERNAME = os.getenv("INSTAGRAM_USERNAME")
 PASSWORD = os.getenv("INSTAGRAM_PASSWORD")
@@ -33,10 +48,10 @@ def login():
             cl.login(USERNAME, PASSWORD)
 
         cl.dump_settings(SESSION_FILE)
-        print("Logged in successfully")
+        logging.info("Logged in successfully")
 
     except Exception as e:
-        print(f"Login failed: {e}")
+        logging.error(f"Login failed: {e}")
         raise e
 
 
@@ -120,19 +135,19 @@ def check():
                     message = f"{sender_name}: {extract_message(item)}"
 
                     notify(title, message)
-                    print(f"{title}: {message}")
+                    logging.info(f"{title}: {message}")
 
             except Exception as te:
-                print(f"Skipping thread: {te}")
+                logging.warning(f"Skipping thread: {te}")
                 continue
 
     except Exception as e:
-        print(f"Error fetching messages: {e}")
-        print("Trying to re-login...")
+        logging.error(f"Error fetching messages: {e}")
+        logging.info("Trying to re-login...")
         try:
             login()
         except Exception as re:
-            print(f"Re-login failed: {re}")
+            logging.error(f"Re-login failed: {re}")
 
     save_seen(seen)
 
@@ -141,12 +156,12 @@ def check():
 # RUN LOOP
 # -----------------------
 def main():
-    print("Starting Instagram notifier...")
+    logging.info("Starting Instagram notifier...")
     login()
 
     while True:
         check()
-        print(f"Checked. Sleeping {POLL_INTERVAL}s...\n")
+        logging.info(f"Checked. Sleeping {POLL_INTERVAL}s...")
         time.sleep(POLL_INTERVAL + random.randint(-20, 20))
 
 

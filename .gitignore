@@ -5,3 +5,4 @@ __pycache__/
 ig_session.json
 *.plist
 ig_seen.json
+*.log

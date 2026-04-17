@@ -40,6 +40,5 @@ Desktop notifications for Instagram Direct Messages on macOS.
 
 ## Notes
 
-- `ig_session.json` is auto-generated after first login (ignored in git)
 - Notification interval: ~2 minutes by default
 - Edit `POLL_INTERVAL` in `main.py` to adjust frequency
