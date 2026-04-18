@@ -10,12 +10,12 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/ashutoshpatkar/instadm/venv/bin/python</string>
-        <string>/Users/ashutoshpatkar/instadm/main.py</string>
+        <string>${HOME}/instadm/venv/bin/python</string>
+        <string>${HOME}/instadm/main.py</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <string>/Users/ashutoshpatkar/instadm</string>
+    <string>${HOME}/instadm</string>
 
     <key>RunAtLoad</key>
     <true/>
