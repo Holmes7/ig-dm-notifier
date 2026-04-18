@@ -3,7 +3,7 @@
 Desktop notifications for Instagram Direct Messages on macOS.
 
 ## Who is this for
-I kept noticing how easily Instagram Reels would eat up my time without me realizing it. I tried deleting the app a few times, but then I didn't get any notifications of my DMs either. DMs notifications are quite important me so I used to end up installing the app again in a few days.
+I kept noticing how easily Instagram Reels would eat up my time without me realizing it. I tried deleting the app a few times and tried using the browser, but then I didn't get any notifications of my DMs either. DMs notifications are quite important me so I used to end up installing the app again in a few days.
 
 Couldn’t find a simple fix for this tradeoff, so I built one.
 
