@@ -9,12 +9,6 @@ Couldn’t find a simple fix for this tradeoff, so I built one.
 
 This script sends macOS native notifications for Instagram DMs, so you can stay off the app but still be reachable. If you’ve faced something similar, this might help.
 
-## Features
-
-- Real-time monitoring of Instagram DMs
-- Native macOS notifications
-- Automatic re-login on session expiry
-
 ## Setup
 
 ### 1. Clone and enter the folder. Make sure to run the program in the home directory.
